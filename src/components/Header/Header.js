@@ -20,11 +20,19 @@ export default class Example extends React.Component {
         this.state = {
             isOpen: false,
         };
+        this.toggleDarkMode = this.toggleDarkMode.bind(this);
     }
     toggle() {
         this.setState({
             isOpen: !this.state.isOpen
         });
+    }
+
+    toggleDarkMode() {
+        this.setState({
+            isOpen: false,
+        });
+        this.props.toggleDarkMode()
     }
 
     render() {
@@ -34,7 +42,7 @@ export default class Example extends React.Component {
         return (
             <div>
                 <Navbar className={navbarClasses} expand="md">
-                    <NavbarBrand href="/">NertzBoard</NavbarBrand>
+                    <NavbarBrand>NertzBoard</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav navbar>
@@ -56,12 +64,19 @@ export default class Example extends React.Component {
                                         Switch Room
                                     </DropdownItem>
                                     <DropdownItem divider />
-                                    <DropdownItem onClick={this.props.toggleDarkMode}>
+                                    <DropdownItem onClick={this.toggleDarkMode}>
                                         Toggle Dark Mode
                                     </DropdownItem>
                                 </DropdownMenu>
                             </UncontrolledDropdown>
+
                         </Nav>
+                        <Nav navbar className={'ml-auto'}>
+                            <NavItem className={'navbar-text'}>
+                                Signed in as matthew
+                            </NavItem>
+                        </Nav>
+
                     </Collapse>
                 </Navbar>
             </div>

@@ -5,6 +5,9 @@ import Header from "./components/Header/Header";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import {BrowserRouter} from "react-router-dom";
+import Gameboard from "./components/Gameboard/Gameboard";
+import {Route, Switch} from "react-router";
 
 
 class App extends React.Component {
@@ -36,7 +39,11 @@ class App extends React.Component {
                     <body className={this.state.darkMode ? 'color-mode-dark' : 'color-mode-light'} />
                 </Helmet>
                 <Header darkMode={this.state.darkMode} toggleDarkMode={this.handleDarkModeToggle}/>
-                <p>Test</p>
+                <BrowserRouter >
+                    <Switch>
+                        <Route path="/" component={Gameboard} />
+                    </Switch>
+                </BrowserRouter>
             </div>
         );
     }
