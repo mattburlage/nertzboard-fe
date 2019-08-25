@@ -12,7 +12,7 @@ import {
     DropdownMenu,
     DropdownItem } from 'reactstrap';
 
-export default class Example extends React.Component {
+export default class Header extends React.Component {
     constructor(props) {
         super(props);
 
@@ -21,6 +21,7 @@ export default class Example extends React.Component {
             isOpen: false,
         };
         this.toggleDarkMode = this.toggleDarkMode.bind(this);
+        this.handle_logout = this.handle_logout.bind(this);
     }
     toggle() {
         this.setState({
@@ -35,9 +36,45 @@ export default class Example extends React.Component {
         this.props.toggleDarkMode()
     }
 
+    handle_logout(e) {
+        e.preventDefault();
+        this.setState({
+            isOpen: false,
+        });
+        this.props.handle_logout()
+    }
+
     render() {
+        let adminLink = (
+            <div />
+        );
+        if (this.props.userData.is_superuser) {
+            adminLink = (
+                <NavItem>
+                    <NavLink href="http://localhost:8000/admin">Admin</NavLink>
+                </NavItem>
+            )
+        }
 
         let navbarClasses = this.props.darkMode ? 'navbar-dark bg-dark' : 'navbar-light';
+
+        if (!this.props.loggedIn) {
+            return (
+                <div>
+                    <Navbar className={navbarClasses} expand="md">
+                        <NavbarBrand>NertzBoard</NavbarBrand>
+                        <NavbarToggler onClick={this.toggle} />
+                        <Collapse isOpen={this.state.isOpen} navbar>
+                            <Nav navbar>
+                                <NavItem>
+                                    <NavLink href="/">Log In</NavLink>
+                                </NavItem>
+                            </Nav>
+                        </Collapse>
+                    </Navbar>
+                </div>
+            )
+        }
 
         return (
             <div>
@@ -69,12 +106,16 @@ export default class Example extends React.Component {
                                     </DropdownItem>
                                 </DropdownMenu>
                             </UncontrolledDropdown>
-
+                            {adminLink}
+                            <NavItem>
+                                <NavLink href='/' onClick={this.handle_logout}>Log Out</NavLink>
+                            </NavItem>
                         </Nav>
                         <Nav navbar className={'ml-auto'}>
                             <NavItem className={'navbar-text'}>
-                                Signed in as matthew
+                                Signed in as {this.props.username}
                             </NavItem>
+
                         </Nav>
 
                     </Collapse>

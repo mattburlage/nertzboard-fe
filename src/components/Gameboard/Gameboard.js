@@ -1,38 +1,52 @@
 import React, {Component} from 'react';
 import Container from "reactstrap/es/Container";
-import Row from "reactstrap/es/Row";
-import Col from "reactstrap/es/Col";
-import FormGroup from "reactstrap/es/FormGroup";
-import Form from "reactstrap/es/Form";
-import Label from "reactstrap/es/Label";
-import Input from "reactstrap/es/Input";
-import Button from "reactstrap/es/Button";
+import PointsForm from "./PointsForm/PointsForm";
+import GameInfo from "./GameInfo/GameInfo";
+import GameTable from "./GameTable/GameTable";
+import Spinner from "reactstrap/es/Spinner";
 
 
 class Gameboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            points: 0,
-            nertz: 0,
-        }
+            isLoaded: false,
+            roomData: {},
+            rounds: {},
+        };
     }
 
+    componentDidMount() {
+        fetch('http://localhost:8000/nertz/current_game_data/', {
+            headers: {
+                Authorization: `JWT ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    roomData: json.room_data,
+                    rounds: json.rounds,
+                    isLoaded: true,
+                });
+            });
+    }
 
     render() {
+        if (!this.state.isLoaded && false) {
+            return (
+                <div className={'mt-5 text-center'}><Spinner type={'grow'} color={'primary'} /><br/>Loading</div>
+            )
+        }
+
         return (
             <Container className='mt-3'>
-                <Row>
-                    <Col sm={12}>
-                        <h4>Game # 45</h4>
-                        <h6>Room: Ivins</h6>
-                    </Col>
-                </Row>
-                <Row>
-                    <Form>
-
-                    </Form>
-                </Row>
+                <GameInfo roomData={this.state.roomData}/>
+                <PointsForm />
+                <GameTable gameData={this.state.rounds}
+                           maxRounds={this.state.roomData.max_rounds}
+                           darkMode={this.props.darkMode}
+                />
             </Container>
         );
     }
