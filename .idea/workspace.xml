@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00032f66-24b7-4857-b3c7-f248d79ebf80" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Gameboard/GameInfo/GameInfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Gameboard/GameTable/GameTable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Gameboard/PointsForm/PointsForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LoginForm/LoginForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Gameboard/Gameboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Gameboard/Gameboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -89,7 +82,7 @@
       <updated>1566665962448</updated>
       <workItem from="1566665963644" duration="17000" />
       <workItem from="1566665991047" duration="4445000" />
-      <workItem from="1566672448231" duration="16942000" />
+      <workItem from="1566672448231" duration="18561000" />
     </task>
     <task id="LOCAL-00001" summary="stuff">
       <created>1566667813454</created>
@@ -105,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566673287573</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="beginning to set up apis">
+      <created>1566699899707</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1566699899707</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +127,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="stuff" />
     <MESSAGE value="work work etc" />
-    <option name="LAST_COMMIT_MESSAGE" value="work work etc" />
+    <MESSAGE value="beginning to set up apis" />
+    <option name="LAST_COMMIT_MESSAGE" value="beginning to set up apis" />
   </component>
 </project>

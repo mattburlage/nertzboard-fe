@@ -59,11 +59,7 @@ class App extends React.Component {
                     username: json.user.username,
                     userData: json.user,
                 });
-                console.log(json);
-                console.log(this.state);
             });
-
-
     };
 
     handle_signup = (e, data) => {

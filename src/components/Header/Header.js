@@ -98,6 +98,9 @@ export default class Header extends React.Component {
                                         New Game
                                     </DropdownItem>
                                     <DropdownItem>
+                                        Leave Game
+                                    </DropdownItem>
+                                    <DropdownItem>
                                         Switch Room
                                     </DropdownItem>
                                     <DropdownItem divider />
