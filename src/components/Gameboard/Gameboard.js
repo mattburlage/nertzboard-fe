@@ -53,6 +53,7 @@ class Gameboard extends Component {
                 <GameTable gameData={this.state.rounds}
                            maxRounds={this.state.roomData.max_rounds}
                            darkMode={this.props.darkMode}
+                           handleRefresh={this.updateScores}
                 />
             </Container>
         );

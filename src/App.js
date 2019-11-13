@@ -9,12 +9,15 @@ import {BrowserRouter} from "react-router-dom";
 import Gameboard from "./components/Gameboard/Gameboard";
 import {Route, Switch} from "react-router";
 import LoginForm from "./components/LoginForm/LoginForm";
+import Spinner from "reactstrap/es/Spinner";
+import Loader from 'react-loader-spinner'
 
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            isLoaded: false,
             darkMode: localStorage.getItem('nertz-dark') === 't',
             has_key: !!localStorage.getItem('token'),
             loginError: null,
@@ -43,14 +46,17 @@ class App extends React.Component {
                     if (!json.details && !json.non_field_errors) {
                         this.setState({
                             username: json.username,
+                            isLoaded: true,
                         });
                     } else if(json.details) {
                         this.setState({
                             loginError: json.details,
+                            isLoaded: false,
                         })
                     } else if (json.non_field_errors) {
                         this.setState({
                             loginError: json.non_field_errors,
+                            isLoaded: false,
                         })
                     }
                 })
@@ -130,7 +136,26 @@ class App extends React.Component {
         })
     }
 
+    loading() {
+        // TODO: enable dark mode loader
+        return (
+            <div className='mt-5 text-center'>
+                <Loader
+                    type="Puff"
+                    color="#00BFFF"
+                    height={200}
+                    width={200}
+                    timeout={3000} //3 secs
+                />
+            </div>
+        )
+    }
+
     render() {
+        if (!this.state.isLoaded) {
+            return this.loading()
+        }
+
         let defaultRoute = (props) => <Gameboard darkMode={this.state.darkMode} {...props} isAuthed={true} />;
         if (!this.state.has_key || !this.state.username) {
             defaultRoute = (props) => <LoginForm handleLogin={this.handle_login}

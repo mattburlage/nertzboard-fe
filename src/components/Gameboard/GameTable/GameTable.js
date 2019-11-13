@@ -3,9 +3,20 @@ import Row from "reactstrap/es/Row";
 import Col from "reactstrap/es/Col";
 import Table from "reactstrap/es/Table";
 import Badge from "reactstrap/es/Badge";
+import {Link} from "react-router-dom";
 
 class GameTable extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            gameData: null,
+        }
+    }
+
+
     render() {
+        console.log(this.state.gameData);
+
         let rounds = this.props.gameData;
 
         let gameRows = [];
@@ -38,9 +49,12 @@ class GameTable extends Component {
 
         return (
             <div>
-                <Row className='mt-5'>
+                <Row className='mt-3'>
                     <Col className={'d-none d-md-block'}/>
                     <Col xs={12} md={6}>
+                        <div className={'mb-3'}>
+                            <Link to={'#'} onClick={this.props.handleRefresh}>Refresh</Link>
+                        </div>
                         <Table className={(this.props.darkMode ? 'table-dark' : '' ) + ' table-striped'}>
                             <thead>
                             <tr>

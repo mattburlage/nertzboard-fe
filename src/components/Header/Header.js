@@ -98,12 +98,12 @@ export default class Header extends React.Component {
                                     <DropdownItem>
                                         New Game
                                     </DropdownItem>
-                                    <DropdownItem>
-                                        Leave Game
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        Switch Room
-                                    </DropdownItem>
+                                    {/*<DropdownItem>*/}
+                                    {/*    Leave Game*/}
+                                    {/*</DropdownItem>*/}
+                                    {/*<DropdownItem>*/}
+                                    {/*    Switch Room*/}
+                                    {/*</DropdownItem>*/}
                                     <DropdownItem divider />
                                     <DropdownItem onClick={this.toggleDarkMode}>
                                         Toggle Dark Mode
