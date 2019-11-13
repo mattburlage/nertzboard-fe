@@ -7,9 +7,9 @@ class GameInfo extends Component {
         return (
             <Row>
                 <Col sm={12}>
-                    <h4>Game # {this.props.roomData.game}</h4>
+                    <h4>Round: {this.props.roomData.curround}</h4>
+                    <h6>Game # {this.props.roomData.game}</h6>
                     <h6>Room: {this.props.roomData.name}</h6>
-                    <h6>Round: {this.props.roomData.curround}</h6>
                 </Col>
             </Row>
         );

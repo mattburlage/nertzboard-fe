@@ -14,9 +14,14 @@ class Gameboard extends Component {
             roomData: {},
             rounds: {},
         };
+        this.updateScores = this.updateScores.bind(this);
     }
 
     componentDidMount() {
+        this.updateScores()
+    }
+
+    updateScores() {
         fetch('http://localhost:8000/nertz/current_game_data/', {
             headers: {
                 Authorization: `JWT ${localStorage.getItem('token')}`
@@ -42,7 +47,9 @@ class Gameboard extends Component {
         return (
             <Container className='mt-3'>
                 <GameInfo roomData={this.state.roomData}/>
-                <PointsForm />
+                <PointsForm
+                    handleUpdate={this.updateScores}
+                />
                 <GameTable gameData={this.state.rounds}
                            maxRounds={this.state.roomData.max_rounds}
                            darkMode={this.props.darkMode}

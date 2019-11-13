@@ -3,8 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="00032f66-24b7-4857-b3c7-f248d79ebf80" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Gameboard/GameInfo/GameInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Gameboard/GameInfo/GameInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Gameboard/GameTable/GameTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Gameboard/GameTable/GameTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Gameboard/Gameboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Gameboard/Gameboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Gameboard/PointsForm/PointsForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Gameboard/PointsForm/PointsForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginForm/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm/LoginForm.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,21 +18,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1Psbt6HHXkZIYruO0lP8MomBx7p" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
-    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -41,7 +39,6 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -55,16 +52,10 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.npm start">
-    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
-      <method v="2" />
-    </configuration>
-    <configuration name="npm start" type="js.build_tools.npm">
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
+      <command value="start" />
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
@@ -81,31 +72,20 @@
       <option name="presentableId" value="Default" />
       <updated>1566665962448</updated>
       <workItem from="1566665963644" duration="17000" />
-      <workItem from="1566665991047" duration="4445000" />
-      <workItem from="1566672448231" duration="18561000" />
+      <workItem from="1566667621234" duration="2502000" />
+      <workItem from="1566701838547" duration="14404000" />
+      <workItem from="1566822024930" duration="7000" />
+      <workItem from="1568381764080" duration="821000" />
+      <workItem from="1573683168217" duration="557000" />
     </task>
-    <task id="LOCAL-00001" summary="stuff">
-      <created>1566667813454</created>
+    <task id="LOCAL-00001" summary="added dark mode">
+      <created>1566670169141</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1566667813454</updated>
+      <updated>1566670169141</updated>
     </task>
-    <task id="LOCAL-00002" summary="work work etc">
-      <created>1566673287573</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1566673287573</updated>
-    </task>
-    <task id="LOCAL-00003" summary="beginning to set up apis">
-      <created>1566699899707</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1566699899707</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,9 +105,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="stuff" />
-    <MESSAGE value="work work etc" />
-    <MESSAGE value="beginning to set up apis" />
-    <option name="LAST_COMMIT_MESSAGE" value="beginning to set up apis" />
+    <MESSAGE value="added dark mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="added dark mode" />
   </component>
 </project>

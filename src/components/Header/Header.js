@@ -48,7 +48,8 @@ export default class Header extends React.Component {
         let adminLink = (
             <div />
         );
-        if (this.props.userData.is_superuser) {
+
+        if (this.props.superUser) {
             adminLink = (
                 <NavItem>
                     <NavLink href="http://localhost:8000/admin">Admin</NavLink>

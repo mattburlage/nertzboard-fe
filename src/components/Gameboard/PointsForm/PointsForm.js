@@ -5,20 +5,6 @@ import Button from "reactstrap/es/Button";
 import Row from "reactstrap/es/Row";
 import Form from "reactstrap/es/Form";
 
-const fakeGameData = {
-    players: [
-        {
-          id: '0',
-          name: 'Matthew',
-          score: '7',
-        },
-        {
-          id: '3',
-          name: 'Chelsea',
-          score: '6',
-        },
-    ]
-};
 
 class PointsForm extends Component {
     constructor(props) {
@@ -26,7 +12,7 @@ class PointsForm extends Component {
         this.state = {
             points: '',
             nertz: '',
-            gameData: fakeGameData,
+            gameData: {},
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,9 +28,30 @@ class PointsForm extends Component {
         });
     };
 
-    handleSubmit(event) {
+    handleSubmit(event, data) {
         event.preventDefault();
-        alert('Fake-Post - sending to api:' + this.state.nertz + ' and ' + this.state.points );
+
+        let sendData = {
+            'nertz': data.nertz,
+            'points': data.points,
+        };
+
+        fetch('http://localhost:8000/nertz/submit_hand/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${localStorage.getItem('token')}`,
+            },
+            body: JSON.stringify(sendData)
+        })
+            .then(res => res.json())
+            .then(() => {
+                this.setState({
+                    nertz: '',
+                    points: '',
+                });
+                this.props.handleUpdate()
+            });
     }
 
     render() {

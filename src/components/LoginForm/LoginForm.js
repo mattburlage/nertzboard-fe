@@ -41,10 +41,12 @@ class LoginForm extends Component {
                 <Container>
                     <Form onSubmit={e => this.props.handleLogin(e, this.state)}>
                         <Row className="justify-content-center mt-5">
-                            <Col md="8">
+                            <Col md="4">
 
                                 <h1>Login</h1>
-                                <p className="text-muted">Sign In to your account</p>
+                                <p className="text-muted">
+                                    {!!this.props.loginError ? this.props.loginError : 'Sign In to your account'}
+                                </p>
                                 <InputGroup className="mb-3">
                                     <InputGroupAddon addonType="prepend">
                                         <InputGroupText>
@@ -53,6 +55,7 @@ class LoginForm extends Component {
                                     </InputGroupAddon>
                                     <Input name='username'
                                            type="text"
+                                           required
                                            placeholder="Username"
                                            autoComplete="username"
                                            value={this.state.username}
@@ -67,6 +70,7 @@ class LoginForm extends Component {
                                     </InputGroupAddon>
                                     <Input name='password'
                                            type="password"
+                                           required
                                            placeholder="Password"
                                            autoComplete="current-password"
                                            value={this.state.password}
@@ -78,10 +82,10 @@ class LoginForm extends Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs="6" className={'text-left'}>
+                            <Col xs="6" md='4' className={'text-left'}>
                                 <Button color="primary" className="px-4 mr-2">Login</Button>
                             </Col>
-                            <Col xs="6" className="text-right">
+                            <Col xs="6" md='4' className="text-right">
                                 <Link to="/register">
                                     <Button color="link" tabIndex={-1}>Register Now!</Button>
                                 </Link>

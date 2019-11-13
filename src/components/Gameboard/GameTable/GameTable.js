@@ -15,7 +15,7 @@ class GameTable extends Component {
             if (behindInRounds) upToDate = false;
 
             let newJsx = (
-                <tr key={i} className={ behindInRounds ? 'bg-warning' : ''}>
+                <tr key={i} className={ behindInRounds ? 'bg-warning color-black' : ''}>
                     <td>{i+1}</td>
                     <td>{rounds[i].name.split(' ')[0]}</td>
                     <td>{rounds[i].score}</td>

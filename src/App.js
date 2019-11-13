@@ -16,7 +16,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             darkMode: localStorage.getItem('nertz-dark') === 't',
-            logged_in: !!localStorage.getItem('token'),
+            has_key: !!localStorage.getItem('token'),
+            loginError: null,
             username: '',
             userData: {},
         };
@@ -26,18 +27,33 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        if (this.state.logged_in) {
+        if (this.state.has_key) {
             fetch('http://localhost:8000/nertz/current_user/', {
                 headers: {
                     Authorization: `JWT ${localStorage.getItem('token')}`
                 }
             })
+                .catch(res => {
+                    this.setState({
+                        loginError: res.status + ' ' + res.statusText,
+                    })
+                })
                 .then(res => res.json())
                 .then(json => {
-                    this.setState({
-                        username: json.username,
-                    });
-                });
+                    if (!json.details && !json.non_field_errors) {
+                        this.setState({
+                            username: json.username,
+                        });
+                    } else if(json.details) {
+                        this.setState({
+                            loginError: json.details,
+                        })
+                    } else if (json.non_field_errors) {
+                        this.setState({
+                            loginError: json.non_field_errors,
+                        })
+                    }
+                })
         }
     }
 
@@ -50,15 +66,30 @@ class App extends React.Component {
             },
             body: JSON.stringify(data)
         })
+            .catch(res => {
+                this.setState({
+                    loginError: res.status + ' ' + res.statusText,
+                })
+            })
             .then(res => res.json())
             .then(json => {
-                localStorage.setItem('token', json.token);
-                this.setState({
-                    logged_in: true,
-                    displayed_form: '',
-                    username: json.user.username,
-                    userData: json.user,
-                });
+                if (!json.details && !json.non_field_errors) {
+                    localStorage.setItem('token', json.token);
+                    this.setState({
+                        has_key: !!localStorage.getItem('token'),
+                        displayed_form: '',
+                        username: json.user.username,
+                        userData: json.user,
+                    });
+                } else if(json.details) {
+                    this.setState({
+                        loginError: json.details,
+                    })
+                } else if (json.non_field_errors) {
+                    this.setState({
+                        loginError: json.non_field_errors,
+                    })
+                }
             });
     };
 
@@ -75,7 +106,7 @@ class App extends React.Component {
             .then(json => {
                 localStorage.setItem('token', json.token);
                 this.setState({
-                    logged_in: true,
+                    has_key: !!localStorage.getItem('token'),
                     displayed_form: '',
                     username: json.username
                 });
@@ -84,7 +115,7 @@ class App extends React.Component {
 
     handle_logout = () => {
         localStorage.removeItem('token');
-        this.setState({ logged_in: false, username: '' });
+        this.setState({ has_key: !!localStorage.getItem('token'), username: '' });
     };
 
     handleDarkModeToggle() {
@@ -101,19 +132,20 @@ class App extends React.Component {
 
     render() {
         let defaultRoute = (props) => <Gameboard darkMode={this.state.darkMode} {...props} isAuthed={true} />;
-        if (!this.state.logged_in) {
-            defaultRoute = (props) => <LoginForm handleLogin={this.handle_login} {...props} isAuthed={true} />
+        if (!this.state.has_key || !this.state.username) {
+            defaultRoute = (props) => <LoginForm handleLogin={this.handle_login}
+                                                 loginError={this.state.loginError}
+                                                 {...props} isAuthed={true} />
         }
-
         return (
             <div className="App">
                 <Helmet >
                     <title>NertzBoard</title>
                     <body className={this.state.darkMode ? 'color-mode-dark' : 'color-mode-light'} />
                 </Helmet>
-                <Header loggedIn={this.state.logged_in}
+                <Header loggedIn={!!this.state.username}
                         username={this.state.username}
-                        userData={this.state.userData}
+                        isAdmin={this.state.is_superuser}
                         darkMode={this.state.darkMode}
                         toggleDarkMode={this.handleDarkModeToggle}
                         handle_logout={this.handle_logout}
