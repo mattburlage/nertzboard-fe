@@ -31,7 +31,7 @@ class App extends React.Component {
 
     componentDidMount() {
         if (this.state.has_key) {
-            fetch('http://localhost:8000/nertz/current_user/', {
+            fetch(apiUrl + '/nertz/current_user/', {
                 headers: {
                     Authorization: `JWT ${localStorage.getItem('token')}`
                 }

@@ -1,3 +1,3 @@
-const apiUrl = "http://localhost:8000";
+const apiUrl = "https://mattburlage.pythonanywhere.com";
 
 export default apiUrl;

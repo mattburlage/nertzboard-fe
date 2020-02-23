@@ -11,6 +11,7 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem } from 'reactstrap';
+import apiUrl from "../../assets/apiUrl";
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -52,7 +53,7 @@ export default class Header extends React.Component {
         if (this.props.superUser) {
             adminLink = (
                 <NavItem>
-                    <NavLink href="http://localhost:8000/admin">Admin</NavLink>
+                    <NavLink href={apiUrl + "/admin"}>Admin</NavLink>
                 </NavItem>
             )
         }
