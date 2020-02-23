@@ -4,7 +4,9 @@ import PointsForm from "./PointsForm/PointsForm";
 import GameInfo from "./GameInfo/GameInfo";
 import GameTable from "./GameTable/GameTable";
 import Spinner from "reactstrap/es/Spinner";
+import apiUrl from "../../assets/apiUrl";
 
+let myTimer;
 
 class Gameboard extends Component {
     constructor(props) {
@@ -13,8 +15,10 @@ class Gameboard extends Component {
             isLoaded: false,
             roomData: {},
             rounds: {},
+            autoRefresh: false,
         };
         this.updateScores = this.updateScores.bind(this);
+        this.toggleAutoRefresh = this.toggleAutoRefresh.bind(this);
     }
 
     componentDidMount() {
@@ -22,7 +26,8 @@ class Gameboard extends Component {
     }
 
     updateScores() {
-        fetch('http://localhost:8000/nertz/current_game_data/', {
+        console.log('Update Scores');
+        fetch(apiUrl + '/nertz/current_game_data/', {
             headers: {
                 Authorization: `JWT ${localStorage.getItem('token')}`
             }
@@ -35,6 +40,21 @@ class Gameboard extends Component {
                     isLoaded: true,
                 });
             });
+    }
+
+    toggleAutoRefresh () {
+        console.log('toggleAutoRefresh', this.state.autoRefresh);
+        if (this.state.autoRefresh) {
+            this.setState({
+                autoRefresh: false,
+            });
+            clearInterval(myTimer)
+        } else {
+            this.setState({
+                autoRefresh: true,
+            });
+            myTimer = setInterval(this.updateScores, 5000)
+        }
     }
 
     render() {
@@ -54,6 +74,8 @@ class Gameboard extends Component {
                            maxRounds={this.state.roomData.max_rounds}
                            darkMode={this.props.darkMode}
                            handleRefresh={this.updateScores}
+                           toggleAutoRefresh={this.toggleAutoRefresh}
+                           autoRefresh={this.state.autoRefresh}
                 />
             </Container>
         );

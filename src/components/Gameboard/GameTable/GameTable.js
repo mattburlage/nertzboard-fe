@@ -9,14 +9,11 @@ class GameTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            gameData: null,
+            gameData: this.props.gameData,
         }
     }
 
-
     render() {
-        console.log(this.state.gameData);
-
         let rounds = this.props.gameData;
 
         let gameRows = [];
@@ -53,7 +50,9 @@ class GameTable extends Component {
                     <Col className={'d-none d-md-block'}/>
                     <Col xs={12} md={6}>
                         <div className={'mb-3'}>
-                            <Link to={'#'} onClick={this.props.handleRefresh}>Refresh</Link>
+                            <Link to={'#'} onClick={this.props.toggleAutoRefresh}>
+                                Turn {this.props.autoRefresh ? 'Off' : 'On'} Auto-Refresh
+                            </Link>
                         </div>
                         <Table className={(this.props.darkMode ? 'table-dark' : '' ) + ' table-striped'}>
                             <thead>

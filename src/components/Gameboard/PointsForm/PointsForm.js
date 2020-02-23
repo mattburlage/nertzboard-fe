@@ -4,6 +4,7 @@ import Input from "reactstrap/es/Input";
 import Button from "reactstrap/es/Button";
 import Row from "reactstrap/es/Row";
 import Form from "reactstrap/es/Form";
+import apiUrl from "../../../assets/apiUrl";
 
 
 class PointsForm extends Component {
@@ -36,7 +37,7 @@ class PointsForm extends Component {
             'points': data.points,
         };
 
-        fetch('http://localhost:8000/nertz/submit_hand/', {
+        fetch(apiUrl + '/nertz/submit_hand/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

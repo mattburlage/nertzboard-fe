@@ -9,8 +9,8 @@ import {BrowserRouter} from "react-router-dom";
 import Gameboard from "./components/Gameboard/Gameboard";
 import {Route, Switch} from "react-router";
 import LoginForm from "./components/LoginForm/LoginForm";
-import Spinner from "reactstrap/es/Spinner";
 import Loader from 'react-loader-spinner'
+import apiUrl from "./assets/apiUrl";
 
 
 class App extends React.Component {
@@ -60,12 +60,17 @@ class App extends React.Component {
                         })
                     }
                 })
+        } else {
+            this.setState({
+                isLoaded: true,
+            })
+
         }
     }
 
     handle_login = (e, data) => {
         e.preventDefault();
-        fetch('http://localhost:8000/token-auth/', {
+        fetch(apiUrl + '/token-auth/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -101,7 +106,7 @@ class App extends React.Component {
 
     handle_signup = (e, data) => {
         e.preventDefault();
-        fetch('http://localhost:8000/nertz/users/', {
+        fetch(apiUrl + '/nertz/users/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -152,9 +157,7 @@ class App extends React.Component {
     }
 
     render() {
-        if (!this.state.isLoaded) {
-            return this.loading()
-        }
+        if (!this.state.isLoaded) return this.loading();
 
         let defaultRoute = (props) => <Gameboard darkMode={this.state.darkMode} {...props} isAuthed={true} />;
         if (!this.state.has_key || !this.state.username) {

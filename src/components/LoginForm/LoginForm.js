@@ -36,6 +36,7 @@ class LoginForm extends Component {
     };
 
     render() {
+        console.log('login page');
         return (
             <div className="app flex-row align-items-center">
                 <Container>
@@ -77,15 +78,13 @@ class LoginForm extends Component {
                                            onChange={this.handle_change}
                                     />
                                 </InputGroup>
-
-
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs="6" md='4' className={'text-left'}>
+                            <Col xs="12" className='text-center'>
                                 <Button color="primary" className="px-4 mr-2">Login</Button>
                             </Col>
-                            <Col xs="6" md='4' className="text-right">
+                            <Col xs="12" className="text-center mt-3">
                                 <Link to="/register">
                                     <Button color="link" tabIndex={-1}>Register Now!</Button>
                                 </Link>
