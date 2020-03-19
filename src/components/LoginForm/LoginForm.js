@@ -43,7 +43,6 @@ class LoginForm extends Component {
                     <Form onSubmit={e => this.props.handleLogin(e, this.state)}>
                         <Row className="justify-content-center mt-5">
                             <Col md="4">
-
                                 <h1>Login</h1>
                                 <p className="text-muted">
                                     {!!this.props.loginError ? this.props.loginError : 'Sign In to your account'}
