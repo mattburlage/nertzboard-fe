@@ -84,9 +84,9 @@ class LoginForm extends Component {
                                 <Button color="primary" className="px-4 mr-2">Login</Button>
                             </Col>
                             <Col xs="12" className="text-center mt-3">
-                                <Link to="/register">
-                                    <Button color="link" tabIndex={-1}>Register Now!</Button>
-                                </Link>
+                                {/*<Link to="/register">*/}
+                                {/*    <Button color="link" tabIndex={-1}>Register Now!</Button>*/}
+                                {/*</Link>*/}
                                 {/*<Button color="link" className="px-0">Forgot password?</Button>*/}
                             </Col>
                         </Row>
